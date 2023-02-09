@@ -1,0 +1,371 @@
+:root {
+  --navbar-bg-color: hsl(0, 0%, 15%);
+  --navbar-text-color: hsl(0, 0%, 85%);
+  --navbar-text-color-focus: white;
+  --navbar-bg-contrast: hsl(0, 0%, 25%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 100vw;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#navbar {
+  --navbar-height: 74px;
+  position: fixed;
+  height: var(--navbar-height);
+  background-color: var(--navbar-bg-color);
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+  align-items: center;
+}
+
+
+
+.toggle-button {
+  cursor: pointer;
+}
+
+
+
+
+
+.navbar-item {
+  margin: 0.4em;
+  width: 100%;
+}
+
+.home-link,
+.navbar-link {
+  color: var(--navbar-text-color);
+  text-decoration: none;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+}
+
+.home-link:is(:focus, :hover) {
+  color: var(--navbar-text-color-focus);
+}
+
+.navbar-link {
+  justify-content: center;
+  width: 100%;
+  padding: 0.8em 0.8em;
+  border-radius: 5px;
+}
+
+.navbar-link:is(:focus, :hover) {
+  color: var(--navbar-text-color-focus);
+  background-color: var(--navbar-bg-contrast);
+}
+
+.navbar-logo {
+  background-color: var(--navbar-text-color-focus);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+#navbar-toggle {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/*Dropdown arrow icon when navbar-toggle is triggered*/
+/* /* @media (max-width: 449px) {
+  .navbar-link-icon {
+    display: flex;
+  }
+} */
+
+
+
+.navbar-link-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.navbar-link-icon {
+  float: right;
+}
+.pointer-image{
+  height:20px;
+  width: 20px;
+}
+.skill-link-icon{
+  height:20px;
+  width: 20px;
+}
+
+
+
+
+ 
+
+
+
+
+
+
+/**/
+/*for bacground text to work*/
+
+@media only screen and (max-width:449){
+#skill-content{
+  height: 1;
+}  
+}
+
+
+
+
+.icon-bar {
+  display:inline;
+  width: 25px;
+  height: 4px;
+  margin: 2px;
+  background-color: var(--navbar-text-color);
+}
+
+
+#navbar-toggle:is(:focus, :hover) .icon-bar {
+  background-color: var(--navbar-text-color-focus);
+}
+
+#navbar-toggle[aria-expanded="true"] .icon-bar:is(:first-child, :last-child) {
+  position: absolute;
+  margin: 0;
+  width: 30px;
+  
+}
+
+#navbar-toggle[aria-expanded="true"] .icon-bar:first-child {
+  transform: rotate(45deg);
+}
+
+#navbar-toggle[aria-expanded="true"] .icon-bar:nth-child(2) {
+  opacity: 0;
+}
+
+#navbar-toggle[aria-expanded="true"] .icon-bar:last-child {
+  transform: rotate(-45deg);
+}
+
+#navbar-menu {
+  position: fixed;
+  top: var(--navbar-height);
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  
+  
+}
+#navbar-menu.closed .background-text {
+  display: none;
+}
+
+
+#navbar-toggle[aria-expanded="true"]+#navbar-menu {
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+.navbar-title {
+  display: flexbox;
+  font-size: 14px;
+  margin: 65px 0 0 -40px;/*TRBL*/
+  color: rgb(194, 190, 190);
+  position:absolute;
+  width: 200px;
+  height: 114px;/*original value: 114px*/
+  padding: 40px;/*40px*/
+}
+
+@media screen and(max-width: 230px) {
+  .navbar-title {
+    color: black !important;
+  }
+}
+
+
+
+@media only screen and (max-width: 450px) {
+  #navbar-toggle {
+    width: 10% !important; /* adjust as needed */
+  }
+}
+  .navbar-links {
+  display: flex;
+  list-style: none;
+  position: absolute;
+  background-color: var(--navbar-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0;
+  right: 0;
+  margin: 1.4rem;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#navbar-toggle[aria-expanded="true"]+#navbar-menu .navbar-links {
+  padding: 1em;
+}
+
+@media screen and (min-width: 449px) {
+
+  #navbar-toggle,
+  #navbar-toggle[aria-expanded="true"] {
+    display: none;
+  }
+
+  #navbar-menu,
+  #navbar-toggle[aria-expanded="true"] #navbar-menu {
+    visibility: visible;
+    opacity: 1;
+    position: static;
+    display: block;
+    height: 100%;
+  }
+
+  .navbar-links,
+  #navbar-toggle[aria-expanded="true"] #navbar-menu .navbar-links {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    position: static;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+}
+#education-content, #skill-content {
+  font-size: 3vw;
+}
+@media only screen and (max-width: 449px) {
+  #education-content,#skill-content {
+    font-size: 17px;
+    }
+} 
+/*testing code*/
+
+/*END*/
+
+/*Contact me navbar disappears when screen size is 449px*/
+
+
+/*commenting for LIST=============================================================*/
+.list {
+  display: none;
+ }
+ @media only screen and (max-width: 450px) {
+   .navbar-links{
+      text-align: center;
+   }
+   
+   
+ }
+ @media only screen and (max-width: 450px) {
+  .list{
+    display: block;
+    text-align: center;
+    
+  }
+}
+
+
+
+
+
+
+
+
+/*END*/
+
+.containerz {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+.left-to-right {
+  direction: ltr;
+  writing-mode: horizontal-tb;
+}
+
+.right-to-left {
+  direction: rtl;
+ 
+}
+
+.hidden {
+  display: none;
+}
+
+.letter {
+  display: inline-block;
+  animation: show-letter .1s ease-in-out backwards;
+}
+
+@keyframes show-letter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* #education-content {
+  display: none;
+} */
+/*Delte if it does not work*/
+
+
