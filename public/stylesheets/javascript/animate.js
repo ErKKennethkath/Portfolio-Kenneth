@@ -1,4 +1,16 @@
 const listItems = document.querySelectorAll(".list li");
+const skillButton = document.querySelector("#skill-button");
+const skillContent = document.querySelector("#skill-content");
+const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+const educationButton = document.querySelector("#education-button");
+const educationContent = document.querySelector("#education-content");
+
+window.addEventListener("load", function () {
+  educationContent.style.display = "none";
+  skillContent.style.display = "none";
+});
 
 listItems.forEach(listItem => {
   const text = listItem.textContent;
@@ -30,9 +42,6 @@ listItems.forEach(listItem => {
   }
 });
 
-const navbarToggle = navbar.querySelector("#navbar-toggle");
-  const navbarMenu = document.querySelector("#navbar-menu");
-  const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
   let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
 
   const toggleNavbarVisibility = () => {
@@ -44,10 +53,6 @@ const navbarToggle = navbar.querySelector("#navbar-toggle");
   navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
   navbarMenu.addEventListener("click", toggleNavbarVisibility);
 
- 
-
-  const educationButton = document.querySelector("#education-button");
-  const educationContent = document.querySelector("#education-content");
   let isEducationExpanded = false;
 
   educationButton.addEventListener("click", function () {
@@ -57,18 +62,17 @@ const navbarToggle = navbar.querySelector("#navbar-toggle");
    
   isskillExpanded = false;
   });
-  
-  
-  const skillButton = document.querySelector("#skill-button");
-  const skillContent = document.querySelector("#skill-content");
-
+ 
   let isskillExpanded = false;
 
   skillButton.addEventListener("click", function () {
     isskillExpanded = !isskillExpanded;
    skillContent.style.display = isskillExpanded ? "block" : "none";
    educationContent.style.display = "none";
-   isEducationExpanded = false;
+   if (isEducationExpanded) {
+    educationContent.style.display = "none";
+    isEducationExpanded = false;
+  }
   });
 
   //the following hides text of Tab A when Tab B is clicked
@@ -76,14 +80,17 @@ const navbarToggle = navbar.querySelector("#navbar-toggle");
     $("#education-content").hide();
     $("#skill-content").toggle();
   });
-
-
 //arrrow changes on expanding navbar menu
-
-
-
-
 document.getElementById("education-button").addEventListener("click", function() {
+  var list = this.nextElementSibling;
+  if (list.style.display === "none") {
+    list.style.display = "block";
+  } else {
+    list.style.display = "none";
+  }
+});
+
+document.getElementById("skill-button").addEventListener("click", function() {
   var list = this.nextElementSibling;
   if (list.style.display === "none") {
     list.style.display = "block";
