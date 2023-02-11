@@ -56,6 +56,13 @@ body {
   align-items: center;
 }
 
+@media(max-width:500px){
+  .navbar-link{
+    border-bottom: 1px solid white;
+    border-style:groove;
+  }
+}
+
 .home-link:is(:focus, :hover) {
   color: var(--navbar-text-color-focus);
 }
@@ -154,13 +161,13 @@ body {
     z-index: 1;
   } */
   
-  @media (min-width: 450px) {
+  @media (max-width: 500px) {
     #education-content, #skill-content {
       display: none;
     }
   }
   
-  @media only screen and (min-width:450px){
+  @media only screen and (min-width:499px){
     
   
   #education-content, #skill-content {
@@ -170,10 +177,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
+    
     padding: 20px;
   }
-}
+} 
   
   
 
@@ -262,13 +269,10 @@ body {
 }
 #education-content, #skill-content {
   display: none;
+  text-align: center;
 }
 
-@media only screen and (max-width: 449px) {
-  #education-content,#skill-content {
-    font-size: 17px;
-    }
-} 
+
 /*testing code*/
 
 
@@ -292,10 +296,12 @@ body {
 .left-to-right {
   direction: ltr;
   writing-mode: horizontal-tb;
+  color:#F6AE2D;
 }
 
 .right-to-left {
   direction: rtl;
+  color:#F6AE2D;
  
 }
 
@@ -317,6 +323,7 @@ body {
     opacity: 1;
   }
 }
+
 
 
 
