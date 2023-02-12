@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const path = require('path');
+
 
 app.set('view engine', 'ejs');
 
@@ -32,14 +34,16 @@ app.get('/about', function(req, res) {//routing to orders page
     res.render('education');
   });
   app.get('/reachout', function(req, res) {//routing to reachout page
-    res.render('reachout');
+    res.render('reachout.html');
   });
   app.get('/projects', function(req, res) {//routing to reachout page
-    res.render('projects');
+    res.render('projects.html');
   });
   
 
   app.listen(port, () => {
     console.log(`Serving in port ${port}`);
   });
-app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, '/public')));
+
